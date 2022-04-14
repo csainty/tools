@@ -1,7 +1,9 @@
-FROM debian
+FROM debian:stable-slim
+
+ENV LANG C.UTF-8
 
 RUN apt-get update -qq \
-    && apt-get upgrade -qq -y \
-    && apt-get install -qq -y curl wget vim aeson-pretty watch dnsutils jq
+    && apt-get install -qq -y curl wget vim aeson-pretty watch dnsutils jq \
+    && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT /bin/bash
